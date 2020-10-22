@@ -199,9 +199,10 @@ all: $(TARGETS)
 
 .PHONY: qemu qemu-nox debug debug-nox
 lab1-mon: $(UCOREIMG)
-	$(V)$(TERMINAL) -e "$(QEMU) -S -s -d in_asm -D $(BINDIR)/q.log -monitor stdio -hda $< -serial null"
+	# $(V)$(TERMINAL) -e "$(QEMU) -S -s -d in_asm -D $(BINDIR)/q.log -monitor stdio -hda $< -serial null"
+	$(V)$(TERMINAL) --  "$(QEMU) -S -s -d in_asm -D $(BINDIR)/q.log -monitor stdio -hda $< -serial null"
 	$(V)sleep 2
-	$(V)$(TERMINAL) -e "gdb -q -x tools/lab1init"
+	$(V)$(TERMINAL) -e  "gdb -q -x tools/lab1init"
 debug-mon: $(UCOREIMG)
 #	$(V)$(QEMU) -S -s -monitor stdio -hda $< -serial null &
 	$(V)$(TERMINAL) -e "$(QEMU) -S -s -monitor stdio -hda $< -serial null"
@@ -214,6 +215,7 @@ qemu: $(UCOREIMG)
 
 qemu-nox: $(UCOREIMG)
 	$(V)$(QEMU) -serial mon:stdio -hda $< -nographic
+# TERMINAL        :=xfce4-terminal
 TERMINAL        :=gnome-terminal
 gdb: $(UCOREIMG)
 	$(V)$(QEMU) -S -s -parallel stdio -hda $< -serial null
