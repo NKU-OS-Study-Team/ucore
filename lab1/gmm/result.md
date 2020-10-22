@@ -4,6 +4,17 @@
 
 1.ucore.img文件的生成过程<br>
 (1)makefile中的具体命令及参数：<br>
+```s
+# create ucore.img
+UCOREIMG	:= $(call totarget,ucore.img)
+
+$(UCOREIMG): $(kernel) $(bootblock)
+	$(V)dd if=/dev/zero of=$@ count=10000
+	$(V)dd if=$(bootblock) of=$@ conv=notrunc
+	$(V)dd if=$(kernel) of=$@ seek=1 conv=notrunc
+
+$(call create_target,ucore.img)
+ ```
 (2)使用Make V=设置标记来详细展现执行过程:<br>
   a)GCC将源文件编译为目标文件<br>
   b)链接器将目标文件转换为可执行文件<br>
