@@ -1,6 +1,12 @@
 file bin/kernel
 target remote :1234
+define hook-stop 
+x/i $pc 
+end
 set architecture i8086
 b *0x7c00
 continue
 x /2i $pc
+b *0x00007c7b
+x /10i $pc
+continue
