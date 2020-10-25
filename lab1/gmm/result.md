@@ -83,6 +83,38 @@ tools\sign.c文件完成了特征的标记，代码如下：<br>
 
 ### 练习5 - 实现函数调用堆栈跟踪函数<br>
 函数print_stackframe的实现代码如下：<br>
+```s
+void
+print_stackframe(void) {
+     /* LAB1 YOUR CODE : STEP 1 */
+     /* (1) call read_ebp() to get the value of ebp. the type is (uint32_t);
+      * (2) call read_eip() to get the value of eip. the type is (uint32_t);
+      * (3) from 0 .. STACKFRAME_DEPTH
+      *    (3.1) printf value of ebp, eip
+      *    (3.2) (uint32_t)calling arguments [0..4] = the contents in address (uint32_t)ebp +2 [0..4]
+      *    (3.3) cprintf("\n");
+      *    (3.4) call print_debuginfo(eip-1) to print the C calling function name and line number, etc.
+      *    (3.5) popup a calling stackframe
+      *           NOTICE: the calling funciton's return addr eip  = ss:[ebp+4]
+      *                   the calling funciton's ebp = ss:[ebp]
+      */
+     //    获取ebp和eip地址
+     uint32_t ebp = read_ebp();
+     uint32_t eip = read_eip();
+     while(ebp!=0){
+       //  打印ebp,eip的地址
+       cprintf("ebp:0x%08x eip:0x%08x", ebp, eip);
+       //  打印arguments [0..4]的地址，即前四个参数的地址，由于从ebp开始的前两个位置存储调用者ebp以及返回地址，所以从ebp+2开始
+       cprintf(" args:0x%08x 0x%08x 0x%08x 0x%08x\n", ebp+2, ebp+3, ebp+4, ebp+5);
+       //  调用print_debuginfo函数完成查找对应函数名并打印至屏幕
+       print_debuginfo(eip - 1);
+       //  取返回地址
+       eip = ((uint32_t *)ebp)[1];
+       //  取调用者ebp的值进行回溯
+       ebp = ((uint32_t *)ebp)[0];
+     }
+}
+ ```
 运行结果如下:<br>
 ![代码结果](https://github.com/NKU-OS-Study-Team/ucore/blob/main/lab1/gmm/images/img11.png)<br>
 对于最后一行参数作出以下解释：<br>
