@@ -15,6 +15,42 @@ $(UCOREIMG): $(kernel) $(bootblock)
 
 $(call create_target,ucore.img)
  ```
+ 可得若需生成ucore.img，需生成bootblock与kernel;<br>
+ &emsp;a)创建bootblock;
+ ```s
+ # create bootblock
+bootfiles = $(call listf_cc,boot)
+$(foreach f,$(bootfiles),$(call cc_compile,$(f),$(CC),$(CFLAGS) -Os -nostdinc))
+
+bootblock = $(call totarget,bootblock)
+
+$(bootblock): $(call toobj,$(bootfiles)) | $(call totarget,sign)
+	@echo + ld $@
+	$(V)$(LD) $(LDFLAGS) -N -e start -Ttext 0x7C00 $^ -o $(call toobj,bootblock)
+	@$(OBJDUMP) -S $(call objfile,bootblock) > $(call asmfile,bootblock)
+	@$(OBJDUMP) -t $(call objfile,bootblock) | $(SED) '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' > $(call symfile,bootblock)
+	@$(OBJCOPY) -S -O binary $(call objfile,bootblock) $(call outfile,bootblock)
+	@$(call totarget,sign) $(call outfile,bootblock) $(bootblock)
+
+$(call create_target,bootblock)
+ ```
+  &emsp;在创建过程中，需先对boot文件编译生成对象文件；bootblock的生成依赖与boot文件的对象文件与sign文件,首先，使用ld链接器链接生成bootblock.o文件，设置起始地址为0X7C00；接下来使用objdump进行反汇编生成asm文件，然后将对象文件生成out文件，最后使用sign将out文件生成为bootblock.
+  &emsp;b)创建kernel;
+   ```s
+# create kernel target
+kernel = $(call totarget,kernel)
+
+$(kernel): tools/kernel.ld
+
+$(kernel): $(KOBJS)
+	@echo + ld $@
+	$(V)$(LD) $(LDFLAGS) -T tools/kernel.ld -o $@ $(KOBJS)
+	@$(OBJDUMP) -S $@ > $(call asmfile,kernel)
+	@$(OBJDUMP) -t $@ | $(SED) '1,/SYMBOL TABLE/d; s/ .* / /; /^$$/d' > $(call symfile,kernel)
+
+$(call create_target,kernel)
+ ```
+   &emsp;b)在创建过程中，kernel依赖于kernel.ld以及KOBJS（kernel libs）
 (2)使用Make V=设置标记来详细展现执行过程:<br>
   a)GCC将源文件编译为目标文件<br>
   b)链接器将目标文件转换为可执行文件<br>
