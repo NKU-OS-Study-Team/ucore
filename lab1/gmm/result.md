@@ -34,7 +34,7 @@ $(bootblock): $(call toobj,$(bootfiles)) | $(call totarget,sign)
 
 $(call create_target,bootblock)
  ```
-  &emsp;在创建过程中，需先对boot文件编译生成对象文件；bootblock的生成依赖与boot文件的对象文件与sign文件,首先，使用ld链接器链接生成bootblock.o文件，设置起始地址为0X7C00；接下来使用objdump进行反汇编生成asm文件，然后将对象文件生成out文件，最后使用sign将out文件生成为bootblock.
+  &emsp;在创建过程中，需先对boot文件编译生成对象文件；bootblock的生成依赖与boot文件的对象文件与sign文件,首先，使用ld链接器链接生成bootblock.o文件，设置起始地址为0X7C00；接下来使用objdump进行反汇编生成asm文件，然后将对象文件生成out文件，最后使用sign将out文件生成为bootblock.<br>
   &emsp;b)创建kernel;
    ```s
 # create kernel target
@@ -50,7 +50,22 @@ $(kernel): $(KOBJS)
 
 $(call create_target,kernel)
  ```
-   &emsp;b)在创建过程中，kernel依赖于kernel.ld以及KOBJS（kernel libs）
+在创建过程中，kernel依赖于kernel.ld以及KOBJS（kernel libs,即kern文件夹下文件）,以kernel.ld为链接器脚本使用ld生成文件,接下来使用objdump反汇编出kernel的汇编代码，并将带有符号表的反汇编结果作为sed命令的标准输入进行处理，输出到sym文件，完成kernel的创建.<br>
+&emsp;c)生成ucore.img文件
+```s
+# create ucore.img
+UCOREIMG	:= $(call totarget,ucore.img)
+
+$(UCOREIMG): $(kernel) $(bootblock)
+	$(V)dd if=/dev/zero of=$@ count=10000
+	$(V)dd if=$(bootblock) of=$@ conv=notrunc
+	$(V)dd if=$(kernel) of=$@ seek=1 conv=notrunc
+
+$(call create_target,ucore.img)
+ ```
+使用dd指令，从/dev/zero文件中获取10000个block用于ucore.img，从bootblock文件中获取数据，从kernel文件中获取数据，并且输出到目标文件ucore.img中, 并且跳过第一个block，输出到ucore.img文件中
+
+执行结果如下
 (2)使用Make V=设置标记来详细展现执行过程:<br>
   a)GCC将源文件编译为目标文件<br>
   b)链接器将目标文件转换为可执行文件<br>
@@ -69,7 +84,8 @@ tools\sign.c文件完成了特征的标记，代码如下：<br>
 ### 练习5 - 实现函数调用堆栈跟踪函数<br>
 函数print_stackframe的实现代码如下：<br>
 运行结果如下:<br>
+![代码结果](https://github.com/NKU-OS-Study-Team/ucore/blob/main/lab1/gmm/images/img11.png)<br>
 对于最后一行参数作出以下解释：<br>
-ebp的值为0x00007bf8，查看bootblock.asm文件可得栈顶位置为0x0007c00，可得栈中只能存两个值，第一个位置用于调用者ebp的值，第二个位置存放返回地址值，可推出没有传入参数
-eip的值为0x00007d72，查看bootblock.asm文件，可为得bootmain后第一条指令的地址
-args，本应存放前四个输入参数的位置地址，但由于这里没有传入参数，所以实际上是其他数据
+ebp的值为0x00007bf8，为栈底地址，查看bootblock.asm文件可得栈顶位置为0x0007c00，可得栈中只能存两个值，第一个位置用于调用者ebp的值，第二个位置存放返回地址值，可推出没有传入参数
+eip的值为0x00007d72，为调用栈上的下一个函数指令的返回地址，查看bootblock.asm文件，可得为bootmain后第一条指令的地址
+args，本应存放前四个输入参数的位置地址，但由于这里没有传入参数，所以实际上无实用意义
