@@ -157,7 +157,7 @@ print_stackframe(void) {
 }
  ```
 运行结果如下:<br>
-![代码结果](https://github.com/NKU-OS-Study-Team/ucore/blob/main/lab1/gmm/images/img11.png)<br>
+
 对于最后一行参数作出以下解释：<br>
 ebp的值为0x00007bf8，为栈底地址，查看bootblock.asm文件可得栈顶位置为0x0007c00，可得栈中只能存两个值，第一个位置用于调用者ebp的值，第二个位置存放返回地址值，可推出没有传入参数
 eip的值为0x00007d72，为调用栈上的下一个函数指令的返回地址，查看bootblock.asm文件，可得为bootmain后第一条指令的地址
