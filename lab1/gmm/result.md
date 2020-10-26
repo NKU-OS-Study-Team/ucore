@@ -145,8 +145,8 @@ print_stackframe(void) {
      for (int i = 0; i < STACKFRAME_DEPTH && ebp != 0; ++ i) {
        //  打印ebp,eip的地址
        cprintf("ebp:0x%08x eip:0x%08x", ebp, eip);
-       //  打印arguments [0..4]的地址，即前四个参数的地址，由于从ebp开始的前两个位置存储调用者ebp以及返回地址，所以从ebp+2开始
-       cprintf(" args:0x%08x 0x%08x 0x%08x 0x%08x\n", ebp+2, ebp+3, ebp+4, ebp+5);
+       //  打印arguments [0..4]的地址，即前四个参数的地址，由于从ebp开始的前两个位置存储调用者ebp以及返回地址，所以从ebp[2]开始
+       cprintf(" args:0x%08x 0x%08x 0x%08x 0x%08x\n", ((uint32_t *)ebp)[2], ((uint32_t *)ebp)[3], ((uint32_t *)ebp)[4], ((uint32_t *)ebp)[5]);
        //  调用print_debuginfo函数完成查找对应函数名并打印至屏幕
        print_debuginfo(eip - 1);
        //  取返回地址
