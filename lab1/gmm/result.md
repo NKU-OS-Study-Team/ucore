@@ -142,7 +142,7 @@ print_stackframe(void) {
      //    获取ebp和eip地址
      uint32_t ebp = read_ebp();
      uint32_t eip = read_eip();
-     while(ebp!=0){
+     for (int i = 0; i < STACKFRAME_DEPTH && ebp != 0; ++ i) {
        //  打印ebp,eip的地址
        cprintf("ebp:0x%08x eip:0x%08x", ebp, eip);
        //  打印arguments [0..4]的地址，即前四个参数的地址，由于从ebp开始的前两个位置存储调用者ebp以及返回地址，所以从ebp+2开始
