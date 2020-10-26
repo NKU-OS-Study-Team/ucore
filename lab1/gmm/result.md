@@ -63,14 +63,16 @@ $(UCOREIMG): $(kernel) $(bootblock)
 
 $(call create_target,ucore.img)
  ```
-使用dd指令，从/dev/zero文件中获取10000个block用于ucore.img，从bootblock文件中获取数据，从kernel文件中获取数据，并且输出到目标文件ucore.img中, 并且跳过第一个block，输出到ucore.img文件中
+使用dd指令，从/dev/zero文件中获取10000个block用于ucore.img，从bootblock文件中获取数据，从kernel文件中获取数据，并且输出到目标文件ucore.img中, 并且跳过第一个block，输出到ucore.img文件中.
 
-执行结果如下
-(2)使用Make V=设置标记来详细展现执行过程:<br>
-  a)GCC将源文件编译为目标文件<br>
-  b)链接器将目标文件转换为可执行文件<br>
-  c)dd将文件拷贝至虚拟硬盘ucore.img count中，qemu会基于虚拟硬盘中数据执行代码<br>
-  d)生成ucore.img需要先生成kernel和bootblock，创建一个大小为10000字节的块，然后再将bootblock，kernel拷贝过去。<br>
+(2)使用Make V=设置标记来详细展现执行过程，执行结果如下:<br>
+  &emsp; a)gcc将源文件编译为目标文件<br>
+  ![代码结果](https://github.com/NKU-OS-Study-Team/ucore/blob/main/lab1/gmm/images/img2.png)<br>
+   &emsp;b)链接器将目标文件转换为可执行文件<br>
+  ![代码结果](https://github.com/NKU-OS-Study-Team/ucore/blob/main/lab1/gmm/images/img3.png)<br>
+  &emsp; c)dd将文件拷贝至虚拟硬盘ucore.img count中，qemu会基于虚拟硬盘中数据执行代码<br>
+![代码结果](https://github.com/NKU-OS-Study-Team/ucore/blob/main/lab1/gmm/images/img5.png)<br>
+  &emsp; d)生成ucore.img需要先生成kernel和bootblock，创建一个大小为10000字节的块，然后再将bootblock，kernel拷贝过去。<br>
 bootloader创建过程<br>
 由上代码可得，到要生成bootblock，首先需要生成bootasm.o、bootmain.o、sign
 用sign工具处理bootblock.out，生成bootblock
