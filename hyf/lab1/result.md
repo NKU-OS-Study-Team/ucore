@@ -23,9 +23,9 @@
    在0x7c00处设置断点。此地址是bootloader入口点地址，即boot/bootasm.S的start地址处。
    0x00007c7b是BootLoader中的一个位置，可以在结果中看到它的上下文。
 
-   ![设置断点后的结果展示](hyf/images/breakpoint1.png)
+   ![设置断点后的结果展示](images/breakpoint1.png)
 
-   [运行结果log](labcodes_answer/lab1_result/bin/q.log)
+   [运行结果log](../labcodes_answer/lab1_result/bin/q.log)
    ```s
    0x00007c00:  cli    
    0x00007c00:  cli    
@@ -221,7 +221,7 @@
 
 [`LBA模式`]:LBA(LogicalBlockAddressing)逻辑块寻址模式。管理的硬盘空间可达8.4GB。在LBA模式下，设置的柱面、磁头、扇区等参数并不是实际硬盘的物理参数。在访问硬盘时，由IDE控制器把由柱面、磁头、扇区等参数确定的逻辑地址转换为实际硬盘的物理地址。在LBA模式下，可设置的最大磁头数为255，其余参数与普通模式相同，由此可以计算出可访问的硬盘容量为：512x63x255x1025=8.4GB。不过现在新主板的BIOS对INT13进行了扩展，使得LBA能支持100GB以上的硬盘。
 
-![磁盘IO地址和对应功能](hyf/images/readsect.png)
+![磁盘IO地址和对应功能](images/readsect.png)
 
 - readsect():
    - 等待磁盘准备好
