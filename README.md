@@ -20,3 +20,7 @@
     **Q:**. 安装gnome-terminal后发现无法执行，报错 Unable to init server:Could not connect。
     
     **A:[解决方案](https://www.jianshu.com/p/aca81f8c7f08)**.按照博客说明进行操作,配置远程连接。
+
+## LAB2
+
+- [洪一帆](lab2/洪一帆.md)
