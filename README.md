@@ -4,6 +4,8 @@
 
 - [洪一帆](lab1/hyf/1811363_洪一帆.md)
   
+- [关明明](lab1/gmm/result.md)
+
 
 - **`common problems`**
 
