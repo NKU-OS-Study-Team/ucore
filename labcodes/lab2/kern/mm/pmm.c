@@ -213,6 +213,7 @@ page_init(void) {
     npage = maxpa / PGSIZE;
     pages = (struct Page *)ROUNDUP((void *)end, PGSIZE);
 
+    //将所有页置为保存页
     for (i = 0; i < npage; i ++) {
         SetPageReserved(pages + i);
     }
@@ -404,6 +405,15 @@ page_remove_pte(pde_t *pgdir, uintptr_t la, pte_t *ptep) {
                                   //(6) flush tlb
     }
 #endif
+    if (*ptep&PTE_P) {                      //(1) check if this page table entry is present
+        struct Page *page = pte2page(*ptep); //(2) find corresponding page to pte
+        page_ref_dec(page);//(3) decrease page reference
+        if(page->ref==0){
+            free_page(page);
+        }//(4) and free this page when page reference reachs 0
+        *ptep=0;//(5) clear second page table entry清除二级页表项
+        tlb_invalidate(pgdir,la);//(6) flush tlb
+    }
 }
 
 //page_remove - free an Page which is related linear address la and has an validated pte

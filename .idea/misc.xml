@@ -3,10 +3,12 @@
   <component name="CMakeWorkspace" PROJECT_DIR="$PROJECT_DIR$" />
   <component name="CidrRootsConfiguration">
     <sourceRoots>
-      <file path="$PROJECT_DIR$/labcodes" />
+      <file path="$PROJECT_DIR$/labcodes/lab2" />
       <file path="$PROJECT_DIR$/labcodes_answer" />
-      <file path="$PROJECT_DIR$/related_info" />
     </sourceRoots>
+    <libraryRoots>
+      <file path="$PROJECT_DIR$/related_info" />
+    </libraryRoots>
     <excludeRoots>
       <file path="$PROJECT_DIR$/hyf" />
     </excludeRoots>

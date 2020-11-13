@@ -122,6 +122,7 @@ kva2page(void *kva) {
 }
 /**
  * address in page table or page directory entry
+ * 实际的物理地址（可能是页内的地址）转换为页指针，即忽略低12位
  * @param pte
  * @return
  */
@@ -133,7 +134,7 @@ pte2page(pte_t pte) {
     return pa2page(PTE_ADDR(pte));
 }
 /**
- * 和pte2page类似，将物理地址转换为页指针
+ * 和pte2page类似，将实际的物理地址（可能是页内的地址）转换为页指针，即忽略低12位
  * @param pde
  * @return
  */

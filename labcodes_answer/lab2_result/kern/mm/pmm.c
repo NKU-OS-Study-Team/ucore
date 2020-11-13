@@ -415,7 +415,6 @@ page_remove_pte(pde_t *pgdir, uintptr_t la, pte_t *ptep) {
                                   //(5) clear second page table entry
                                   //(6) flush tlb
     }
-#endif
     if (*ptep & PTE_P) {
         struct Page *page = pte2page(*ptep);
         if (page_ref_dec(page) == 0) {
@@ -423,6 +422,17 @@ page_remove_pte(pde_t *pgdir, uintptr_t la, pte_t *ptep) {
         }
         *ptep = 0;
         tlb_invalidate(pgdir, la);
+    }
+#endif
+
+    if (*ptep&PTE_P) {                      //(1) check if this page table entry is present
+        struct Page *page = pte2page(*ptep); //(2) find corresponding page to pte
+        page_ref_dec(page);//(3) decrease page reference
+        if(page->ref==0){
+            free_page(page);
+        }//(4) and free this page when page reference reachs 0
+        *ptep=0;//(5) clear second page table entry
+        tlb_invalidate(pgdir,la);//(6) flush tlb
     }
 }
 
