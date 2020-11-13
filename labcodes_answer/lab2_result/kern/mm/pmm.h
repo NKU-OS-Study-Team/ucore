@@ -74,16 +74,31 @@ void print_pgdir(void);
 extern struct Page *pages;
 extern size_t npage;
 
+/**
+ * page - pages指针相减，计算其页距离
+ * ppn是32位地址的高20位
+ * @param page : Page*
+ * @return page - pages
+ */
 static inline ppn_t
 page2ppn(struct Page *page) {
     return page - pages;
 }
 
+/**
+ * page to page address
+ * @param page
+ * @return
+ */
 static inline uintptr_t
 page2pa(struct Page *page) {
     return page2ppn(page) << PGSHIFT;
 }
-
+/**
+ *
+ * @param pa
+ * @return &pages[PPN(pa)]: 可能是pages偏移ppn
+ */
 static inline struct Page *
 pa2page(uintptr_t pa) {
     if (PPN(pa) >= npage) {
@@ -91,7 +106,11 @@ pa2page(uintptr_t pa) {
     }
     return &pages[PPN(pa)];
 }
-
+/**
+ * takes a physical address and returns the corresponding kernel virtual address.
+ * @param page
+ * @return
+ */
 static inline void *
 page2kva(struct Page *page) {
     return KADDR(page2pa(page));
@@ -101,7 +120,11 @@ static inline struct Page *
 kva2page(void *kva) {
     return pa2page(PADDR(kva));
 }
-
+/**
+ * address in page table or page directory entry
+ * @param pte
+ * @return
+ */
 static inline struct Page *
 pte2page(pte_t pte) {
     if (!(pte & PTE_P)) {
@@ -109,7 +132,11 @@ pte2page(pte_t pte) {
     }
     return pa2page(PTE_ADDR(pte));
 }
-
+/**
+ * 和pte2page类似，将物理地址转换为页指针
+ * @param pde
+ * @return
+ */
 static inline struct Page *
 pde2page(pde_t pde) {
     return pa2page(PDE_ADDR(pde));

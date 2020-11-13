@@ -1,6 +1,4 @@
 *~
-obj/
-bin/
 .gdb.in
 .qemu.out
 cscope.*

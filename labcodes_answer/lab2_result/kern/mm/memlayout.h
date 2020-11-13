@@ -74,6 +74,7 @@
 #include <atomic.h>
 #include <list.h>
 
+//uintptr_t = unsigned long int
 typedef uintptr_t pte_t;
 typedef uintptr_t pde_t;
 
