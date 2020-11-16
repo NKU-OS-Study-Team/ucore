@@ -360,19 +360,6 @@ get_pte(pde_t *pgdir, uintptr_t la, bool create) {
     }
     return NULL;          // (8) return page table entry
 #endif
-// pde_t *pdep = &pgdir[PDX(la)];
-//     if (!(*pdep & PTE_P)) {
-//         struct Page *page;
-//         if (!create || (page = alloc_page()) == NULL) {
-//             return NULL;
-//         }
-//         set_page_ref(page, 1);
-//         uintptr_t pa = page2pa(page);
-//         memset(KADDR(pa), 0, PGSIZE);
-//         *pdep = pa | PTE_U | PTE_W | PTE_P;
-//     }
-//     return &((pte_t *)KADDR(PDE_ADDR(*pdep)))[PTX(la)];
-
 pde_t *pdep = &pgdir[PDX(la)]; // 获取到页目录表中给定线性地址对应到的页目录项
 pte_t *ptep = &((pte_t *)KADDR(*pdep & ~0xFFF))[PTX(la)]; // 从找到的页目录项中查询到线性地址对应到的页表中的页表项，即页表基址加上线性地址的中的offset（第12...21位，从0开始）
 if (*pdep & PTE_P) return ptep; // 检查查找到的页目录项是否存在，如果存在直接放回找到的页表项即可
