@@ -124,7 +124,7 @@ buddy2 buddy;
 #define RIGHT_LEAF(index) ((index) * 2 + 2)
 #define PARENT(index) ( ((index) + 1) / 2 - 1)
 #define IS_POWER_OF_2(x) (!((x)&((x)-1)))
-#define MAX(a, b) ((a) > (b) ? (a) : b)
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
 //#define ALLOC malloc
 
 
@@ -136,7 +136,7 @@ buddy2 buddy;
 //  if (size < 1 || !IS_POWER_OF_2(size))
 //    return NULL;
 //
-////  self = (struct buddy2 *)ALLOC(2 GIT* size * sizeof(unsigned));
+////  self = (struct buddy2 *)ALLOC(2 * size * sizeof(unsigned));
 //  self->size = size;
 //  node_size = size * 2;
 //
@@ -162,6 +162,7 @@ static void
 default_init_memmap(struct Page *base, size_t n) {
   assert(n > 0);
   struct Page *p = base;
+  cprintf("base0:%p\n",p);
   for (; p != base + n; p ++) {
     assert(PageReserved(p));
 //        将页标记位及页属性置零
@@ -177,6 +178,10 @@ default_init_memmap(struct Page *base, size_t n) {
 //    插入到空闲链表中
   list_add(&free_list, &(base->page_link));
 
+  list_entry_t *le = &free_list;
+  le = list_next(le);
+  struct Page *p1 = le2page(le, page_link);
+  cprintf("base1:%p\n",p1);
 }
 
 static struct Page *
