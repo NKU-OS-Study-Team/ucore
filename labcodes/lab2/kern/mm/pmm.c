@@ -380,7 +380,7 @@ if (!create) return NULL; // 如果该页目录项是不存在的，并且参数
 struct Page* pt = alloc_page(); // 如果需要按需创建新的页表，则请求一个物理页来存储新创建的页表
 if (pt == NULL) return NULL; // 如果物理空间不足，直接返回
 set_page_ref(pt, 1); // 更新该物理页的引用计数
-ptep = KADDR(page2pa(pt)); // 获取到该物理页的虚拟地址（此时已经启动了page机制，内核地址空间），这是因为CPU执行的指令中使用的已经是虚拟地址了
+ptep = page2pa(pt); // 获取到该物理页的虚拟地址（此时已经启动了page机制，内核地址空间），这是因为CPU执行的指令中使用的已经是虚拟地址了
 memset(ptep, 0, PGSIZE); // 新创建的页表进行初始化
 *pdep = (page2pa(pt)& ~0xFFF) | PTE_U | PTE_W | PTE_P; // 对原先的页目录项进行设置，包括设置其对应的页表的物理地址，以及包括存在位在内的标志位
 return ptep[PTX(la)]; // 返回线性地址对应的页目录项
