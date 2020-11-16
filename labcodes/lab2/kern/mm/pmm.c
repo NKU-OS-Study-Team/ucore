@@ -417,6 +417,7 @@ page_remove_pte(pde_t *pgdir, uintptr_t la, pte_t *ptep) {
                                   //(6) flush tlb
     }
 #endif
+//pte物理页的基址
     if (*ptep&PTE_P) {                      //(1) check if this page table entry is present
         struct Page *page = pte2page(*ptep); //(2) find corresponding page to pte
         page_ref_dec(page);//(3) decrease page reference

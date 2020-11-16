@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>1811363洪一帆.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86">内存管理</h1>
+<p><a href=""><code>1811363 洪一帆</code></a></p>
+<h2 id="%E5%90%90%E6%A7%BD">吐槽</h2>
+<blockquote>
+<p>这个内容感觉有点多有点散，自己组织不大起来。</p>
+<p>比如很多函数好像看到过，但是忘记是干嘛的了。</p>
+<p>再比如很多的宏定义，使得原本已经复杂的内容更加复杂难以掌握。尽管可能是为了增加可读性，但是仅限于对程序结构有良好掌握的人而言。</p>
+<p>说到底还是自己对于ucore的掌握不够。</p>
+</blockquote>
+<p><img src="file:///d:/Study/大三上/计算机/操作系统/实验/作业/os_kernel_lab/hyf/lab2/段页式.png" alt=""></p>
+<h2 id="my-work">my work</h2>
+<blockquote>
+<p>练习3：释放某虚地址所在的页并取消对应二级页表项的映射（需要编程）
+当释放一个包含某虚地址的物理内存页时，需要让对应此物理内存页的管理数据结构Page做
+相关的清除处理，使得此物理内存页成为空闲；另外还需把表示虚地址与物理地址对应关系
+的二级页表项清除。请仔细查看和理解page_remove_pte函数中的注释。为此，需要补全在
+kern/mm/pmm.c中的page_remove_pte函数。page_remove_pte函数的调用关系图如下所
+示：图2
+page_remove_pte函数的调用关系图
+请在实验报告中简要说明你的设计实现过程。</p>
+</blockquote>
+<pre class="hljs"><code><div>    <span class="hljs-keyword">if</span> (*ptep&amp;PTE_P) {                      <span class="hljs-comment">//(1) check if this page table entry is present</span>
+        <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Page</span> *<span class="hljs-title">page</span> = <span class="hljs-title">pte2page</span>(*<span class="hljs-title">ptep</span>);</span> <span class="hljs-comment">//(2) find corresponding page to pte</span>
+        page_ref_dec(page);<span class="hljs-comment">//(3) decrease page reference</span>
+        <span class="hljs-keyword">if</span>(page-&gt;ref==<span class="hljs-number">0</span>){
+            free_page(page);
+        }<span class="hljs-comment">//(4) and free this page when page reference reachs 0</span>
+        *ptep=<span class="hljs-number">0</span>;<span class="hljs-comment">//(5) clear second page table entry清除二级页表项</span>
+        tlb_invalidate(pgdir,la);<span class="hljs-comment">//(6) flush tlb</span>
+    }
+</div></code></pre>
+<blockquote>
+<p>请回答如下问题：
+数据结构Page的全局变量（其实是一个数组）的每一项与页表中的页目录项pde和页表项pte有无对应关系？如果有，其对应关系是啥？</p>
+<blockquote>
+<p>有对应关系。</p>
+<p>/* *</p>
+</blockquote>
+</blockquote>
+<pre><code> * struct Page - Page descriptor structures. Each Page describes one
+ * **physical page**. 
+ * */
+</code></pre>
+<blockquote>
+<blockquote>
+<p>该变量为<code>extern struct Page *pages;</code>，其中标识着页目录项的起始地址， virtual address of physicall page array</p>
+<p>然后每一个page都包含着其物理地址<code>int ref;// page frame's reference counter</code>，
+可以通过这个数组索引来寻找到物理页</p>
+<p>具体做法为将物理地址除以一个页的大小，然后乘上一个Page结构的大小获得偏移量，使用偏移量加上Page数组的基地址皆可以或得到对应Page项的地址；</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<p>如果希望虚拟地址与物理地址相等，则需要如何修改lab2，完成此事？</p>
+<blockquote>
+<p>由于在完全启动了ucore之后，虚拟地址和线性地址相等，都等于物理地址加上0xc0000000，如果需要虚拟地址和物理地址相等，可以考虑更新gdt，更新段映射，使得virtual address = linear address - 0xc0000000，这样的话就可以实现virtual address = physical address；</p>
+</blockquote>
+</blockquote>
+<hr>
+<h2 id="%E5%AE%9E%E9%AA%8C%E5%86%85%E5%AE%B9%E5%88%86%E6%9E%90">实验内容分析</h2>
+<blockquote>
+<p>为了完成物理内存管理，这里首先需要探测可用的物理内存资源；了解到物理内存位于什么
+地方，有多大之后，就以固定页面大小来划分整个物理内存空间，并准备以此为最小内存分
+配单位来管理整个物理内存，管理在内核运行过程中每页内存，设定其可用状态（free的，
+used的，还是reserved的），这其实就对应了我们在课本上讲到的连续内存分配概念和原理
+的具体实现；接着ucore
+kernel就要建立页表，
+启动分页机制，让CPU的MMU把预先建立好
+的页表中的页表项读入到TLB中，根据页表项描述的虚拟页（Page）与物理页帧（Page
+Frame）的对应关系完成CPU对内存的读、写和执行操作。这一部分其实就对应了我们在课
+本上讲到内存映射、页表、多级页表等概念和原理的具体实现。
+在代码分析上，建议根据执行流程来直接看源代码，并可采用GDB源码调试的手段来动态地
+分析ucore的执行过程。内存管理相关的总体控制函数是pmm_init函数，它完成的主要工作包
+括：</p>
+<ol>
+<li>初始化物理内存页管理器框架pmm_manager；</li>
+<li>建立空闲的page链表，这样就可以分配以页（4KB）为单位的空闲内存了；</li>
+<li>检查物理内存页分配算法；</li>
+<li>为确保切换到分页机制后，代码能够正常执行，先建立一个临时二级页表；</li>
+<li>建立一一映射关系的二级页表；</li>
+<li>使能分页机制；</li>
+<li>从新设置全局段描述符表；</li>
+<li>取消临时二级页表；</li>
+<li>检查页表建立是否正确；</li>
+<li>通过自映射机制完成页表的打印输出（这部分是扩展知识）</li>
+</ol>
+</blockquote>
+<h3 id="memlayouth">memlayout.h</h3>
+<ul>
+<li>定义page类及其属性：标志位、空闲块</li>
+<li>内存的分段与组织</li>
+<li>预定义的函数，主要用于对页表进行相应的操作</li>
+<li>声明一个<code>free_area_t</code>，用于标明空闲页表</li>
+</ul>
+<pre class="hljs"><code><div><span class="hljs-comment">/* *
+* Virtual memory map:                                          Permissions
+*                                                              kernel/user
+*
+*     4G ------------------&gt; +---------------------------------+
+*                            |                                 |
+*                            |         Empty Memory (*)        |
+*                            |                                 |
+*                            +---------------------------------+ 0xFB000000
+*                            |   Cur. Page Table (Kern, RW)    | RW/-- PTSIZE
+*     VPT -----------------&gt; +---------------------------------+ 0xFAC00000
+*                            |        Invalid Memory (*)       | --/--
+*     KERNTOP -------------&gt; +---------------------------------+ 0xF8000000
+*                            |                                 |
+*                            |    Remapped Physical Memory     | RW/-- KMEMSIZE
+*                            |                                 |
+*     KERNBASE ------------&gt; +---------------------------------+ 0xC0000000
+*                            |                                 |
+*                            |                                 |
+*                            |                                 |
+*                            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* (*) Note: The kernel ensures that "Invalid Memory" is *never* mapped.
+*     "Empty Memory" is normally unmapped, but user programs may map pages
+*     there if desired.
+*
+* */</span>
+
+<span class="hljs-comment">/* *
+ * struct Page - Page descriptor structures. Each Page describes one
+ * physical page. In kern/mm/pmm.h, you can find lots of useful functions
+ * that convert Page to other data types, such as phyical address.
+ * */</span>
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Page</span> {</span>
+    <span class="hljs-keyword">int</span> ref;                        <span class="hljs-comment">// page frame's reference counter</span>
+                                    <span class="hljs-comment">// ref表示这样页被页表的引用记数 （在“实现分页机制”一节会讲到）。如果这个页被页表引用了，即在某页表中有一个页表项设 置了一个虚拟页到这个Page管理的物理页的映射关系，就会把Page的ref加一；反之，若页表 项取消，即映射关系解除，就会把Page的ref减一。f</span>
+    <span class="hljs-keyword">uint32_t</span> flags;                 <span class="hljs-comment">// array of flags that describe the status of the page frame 这表示flags目前用到了两个bit表示页目前具有的两种属性，bit 0表示此页是否被保留 （reserved），如果是被保留的页，则bit 0会设置为1，且不能放到空闲页链表中，即这样的 页不是空闲页，不能动态分配与释放。</span>
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> property;          <span class="hljs-comment">// the num of free block, used in first fit pm manager，主要是我们可以设计不同的页分配算法（best fit, buddy system等），那么这个PG_property就有不同的含义了。</span>
+                                    <span class="hljs-comment">//Page数据结构的成员变量property用来记录某连续内存空闲块的大小（即地址 连续的空闲页的个数）。这里需要注意的是用到此成员变量的这个Page比较特殊，是这个连 续内存空闲块地址最小的一页（即头一页， Head Page）。连续内存空闲块利用这个页的成</span>
+                                    <span class="hljs-comment">//员变量property来记录在此块内的空闲页的个数。这里去的名字property也不是很直观，原因 与上面类似，在不同的页分配算法中，property有不同的含义。</span>
+    <span class="hljs-keyword">list_entry_t</span> page_link;         <span class="hljs-comment">// free list link Page数据结构的成员变量page_link是便于把多个连续内存空闲块链接在一起的双向链表指针 （可回顾在lab0实验指导书中有关双向链表数据结构的介绍）。这里需要注意的是用到此成员 变量的这个Page比较特殊，是这个连续内存空闲块地址最小的一页（即头一页， Head Page）。连续内存空闲块利用这个页的成员变量page_link来链接比它地址小和大的其他连续 内存空闲块。</span>
+};
+
+
+<span class="hljs-comment">/* free_area_t - maintains a doubly linked list to record free (unused) pages
+ * 在初始情况下，也许这个物理内存的空闲物理页都是连续的，这样就形成了一个大的连续内 存空闲块。但随着物理页的分配与释放，这个大的连续内存空闲块会分裂为一系列地址不连 续的多个小连续内存空闲块，且每个连续内存空闲块内部的物理页是连续的。那么为了有效 地管理这些小连续内存空闲块。所有的连续内存空闲块可用一个双向链表管理起来，便于分 配和释放，为此定义了一个free_area_t数据结构，包含了一个list_entry结构的双向链表指针 和记录当前空闲页的个数的无符号整型变量nr_free。其中的链表指针指向了空闲的物理页。*/</span>
+<span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> {</span>
+    <span class="hljs-keyword">list_entry_t</span> free_list;         <span class="hljs-comment">// the list header</span>
+    <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">int</span> nr_free;           <span class="hljs-comment">// # of free pages in this free list</span>
+} <span class="hljs-keyword">free_area_t</span>;
+</div></code></pre>
+<h3 id="mmuh">mmu.h</h3>
+<p>主要存放各种descriptor</p>
+<ul>
+<li>定义状态变量、常量</li>
+<li>定义门</li>
+<li>定义段：基址、段大小、段权限</li>
+<li>定义进程状态：栈指针、段选择器</li>
+</ul>
+<pre class="hljs"><code><div>// A linear address 'la' has a three-part structure as follows:
+//
+// +--------10------+-------10-------+---------12----------+
+// | Page Directory |   Page Table   | Offset within Page  |
+// |      Index     |     Index      |                     |
+// +----------------+----------------+---------------------+
+//  \--- PDX(la) --/ \--- PTX(la) --/ \---- PGOFF(la) ----/
+//  \----------- PPN(la) -----------/
+</div></code></pre>
+<h3 id="pmmh-physical-memory-management">pmm.h (physical memory management)</h3>
+<pre class="hljs"><code><div><span class="hljs-comment">// virtual address of boot-time page directory</span>
+<span class="hljs-keyword">extern</span> <span class="hljs-keyword">pde_t</span> *boot_pgdir;
+<span class="hljs-comment">// physical address of boot-time page directory</span>
+<span class="hljs-keyword">uintptr_t</span> boot_cr3;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pmm_init</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span></span>;
+
+<span class="hljs-comment">// pmm_manager is a physical memory management class. A special pmm manager - XXX_pmm_manager</span>
+<span class="hljs-comment">// only needs to implement the methods in pmm_manager class, then XXX_pmm_manager can be used</span>
+<span class="hljs-comment">// by ucore to manage the total physical memory space.</span>
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">pmm_manager</span> {</span>
+    <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *name;                                 <span class="hljs-comment">// XXX_pmm_manager's name</span>
+    <span class="hljs-keyword">void</span> (*init)(<span class="hljs-keyword">void</span>);                               <span class="hljs-comment">// initialize internal description&amp;management data structure</span>
+                                                      <span class="hljs-comment">// (free block list, number of free block) of XXX_pmm_manager </span>
+    <span class="hljs-keyword">void</span> (*init_memmap)(struct Page *base, <span class="hljs-keyword">size_t</span> n); <span class="hljs-comment">// setup description&amp;management data structcure according to</span>
+                                                      <span class="hljs-comment">// the initial free physical memory space </span>
+    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Page</span> *(*<span class="hljs-title">alloc_pages</span>)(<span class="hljs-title">size_t</span> <span class="hljs-title">n</span>);</span>            <span class="hljs-comment">// allocate &gt;=n pages, depend on the allocation algorithm </span>
+    <span class="hljs-keyword">void</span> (*free_pages)(struct Page *base, <span class="hljs-keyword">size_t</span> n);  <span class="hljs-comment">// free &gt;=n pages with "base" addr of Page descriptor structures(memlayout.h)</span>
+    <span class="hljs-keyword">size_t</span> (*nr_free_pages)(<span class="hljs-keyword">void</span>);                    <span class="hljs-comment">// return the number of free pages </span>
+    <span class="hljs-keyword">void</span> (*check)(<span class="hljs-keyword">void</span>);                              <span class="hljs-comment">// check the correctness of XXX_pmm_manager ，用来编写测试函数</span>
+};
+</div></code></pre>
+<hr>
+
+</body>
+</html>
