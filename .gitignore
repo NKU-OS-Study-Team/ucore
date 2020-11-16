@@ -21,3 +21,9 @@ disk0
 lab2*.idea
 compile_commands.json
 *.zip
+*.asm
+*.d
+*.o
+*.sym
+*.out
+*.img
