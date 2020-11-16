@@ -124,7 +124,7 @@ buddy2 buddy;
 #define RIGHT_LEAF(index) ((index) * 2 + 2)
 #define PARENT(index) ( ((index) + 1) / 2 - 1)
 #define IS_POWER_OF_2(x) (!((x)&((x)-1)))
-#define MAX(a, b) ((a) > (b) ? (a) : b))
+#define MAX(a, b) ((a) > (b) ? (a) : b)
 //#define ALLOC malloc
 
 

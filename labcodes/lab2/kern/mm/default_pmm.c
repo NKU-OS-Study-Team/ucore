@@ -124,7 +124,7 @@ buddy2 buddy;
 #define RIGHT_LEAF(index) ((index) * 2 + 2)
 #define PARENT(index) ( ((index) + 1) / 2 - 1)
 #define IS_POWER_OF_2(x) (!((x)&((x)-1)))
-#define MAX(a, b) ((a) > (b) ? (a) : b))
+#define MAX(a, b) ((a) > (b) ? (a) : b)
 //#define ALLOC malloc
 
 
@@ -303,7 +303,7 @@ buddy_alloc_pages(size_t size) {
   while (index) {
     index = PARENT(index);
     buddy_longest[index] =
-    MAX(buddy_longest[LEFT_LEAF(index)], buddy_longest[RIGHT_LEAF(index)]);
+        MAX(buddy_longest[LEFT_LEAF(index)], buddy_longest[RIGHT_LEAF(index)]);
   }
   struct Page *page = p+offset;
   cprintf("offset:%d\n",offset);
