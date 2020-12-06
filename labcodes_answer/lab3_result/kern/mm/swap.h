@@ -12,6 +12,7 @@
  * |         offset        |   reserved   | 0 |
  * --------------------------------------------
  *           24 bits            7 bits    1 bit
+ *  在swap中的索引                         用来记录是否
  * */
 
 #define MAX_SWAP_OFFSET_LIMIT                   (1 << 24)

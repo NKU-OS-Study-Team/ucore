@@ -1,4 +1,4 @@
-"D:\IDE\CLion 2019.2.5\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - MinGW Makefiles" D:\Documents\Clion\ucore
+"D:\Softwares\CLion 2020.2.4\bin\cmake\win\bin\cmake.exe" -DCMAKE_BUILD_TYPE=Debug -DCMAKE_SH=CMAKE_SH-NOTFOUND -G "CodeBlocks - MinGW Makefiles" D:\Study\大三上\计算机\操作系统\实验\作业\os_kernel_lab
 CMake Warning (dev) in CMakeLists.txt:
   No project() command is present.  The top-level CMakeLists.txt file must
   contain a literal, direct call to the project() command.  Add a line of
@@ -14,18 +14,37 @@ This warning is for project developers.  Use -Wno-dev to suppress it.
 
 -- The C compiler identification is GNU 8.1.0
 -- The CXX compiler identification is GNU 8.1.0
--- Check for working C compiler: D:/PG/MinGW/mingw64/bin/gcc.exe
--- Check for working C compiler: D:/PG/MinGW/mingw64/bin/gcc.exe -- works
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Detecting C compile features
--- Detecting C compile features - done
--- Check for working CXX compiler: D:/PG/MinGW/mingw64/bin/g++.exe
--- Check for working CXX compiler: D:/PG/MinGW/mingw64/bin/g++.exe -- works
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- Configuring done
--- Generating done
--- Build files have been written to: D:/Documents/Clion/ucore/cmake-build-debug
+-- Check for working C compiler: D:/Softwares/MinGW64/bin/gcc.exe
+-- Check for working C compiler: D:/Softwares/MinGW64/bin/gcc.exe - broken
+CMake Error at D:/Softwares/CLion 2020.2.4/bin/cmake/win/share/cmake-3.17/Modules/CMakeTestCCompiler.cmake:60 (message):
+  The C compiler
+
+    "D:/Softwares/MinGW64/bin/gcc.exe"
+
+  is not able to compile a simple test program.
+
+  It fails with the following output:
+
+    Change Dir: D:/Study/澶т笁涓�/璁＄畻鏈�/鎿嶄綔绯荤粺/瀹為獙/浣滀笟/os_kernel_lab/cmake-build-debug/CMakeFiles/CMakeTmp
+    
+    Run Build Command(s):D:/Softwares/MinGW64/bin/mingw32-make.exe cmTC_f24d9/fast && D:/Softwares/MinGW64/bin/mingw32-make.exe  -f CMakeFiles\cmTC_f24d9.dir\build.make CMakeFiles/cmTC_f24d9.dir/build
+    mingw32-make.exe[1]: Entering directory 'D:/Study/澶т笁涓�/璁＄畻鏈�/鎿嶄綔绯荤粺/瀹為獙/浣滀笟/os_kernel_lab/cmake-build-debug/CMakeFiles/CMakeTmp'
+    Building C object CMakeFiles/cmTC_f24d9.dir/testCCompiler.c.obj
+    D:\Softwares\MinGW64\bin\gcc.exe    -o CMakeFiles\cmTC_f24d9.dir\testCCompiler.c.obj   -c D:\Study\婢堆傜瑏娑撳ガ鐠侊紕鐣婚張绡幙宥勭稊缁崵绮篭鐎圭偤鐛橽娴ｆ粈绗焅os_kernel_lab\cmake-build-debug\CMakeFiles\CMakeTmp\testCCompiler.c
+    gcc.exe: error: D:\Study\婢堆傜瑏娑撳ガ鐠侊紕鐣婚張绡幙宥勭稊缁崵绮篭鐎圭偤鐛橽娴ｆ粈绗焅os_kernel_lab\cmake-build-debug\CMakeFiles\CMakeTmp\testCCompiler.c: No such file or directory
+    gcc.exe: fatal error: no input files
+    compilation terminated.
+    mingw32-make.exe[1]: *** [CMakeFiles\cmTC_f24d9.dir\build.make:85: CMakeFiles/cmTC_f24d9.dir/testCCompiler.c.obj] Error 1
+    mingw32-make.exe[1]: Leaving directory 'D:/Study/澶т笁涓�/璁＄畻鏈�/鎿嶄綔绯荤粺/瀹為獙/浣滀笟/os_kernel_lab/cmake-build-debug/CMakeFiles/CMakeTmp'
+    mingw32-make.exe: *** [Makefile:140: cmTC_f24d9/fast] Error 2
+    
+    
+
+  
+
+  CMake will not be able to correctly generate this project.
+
+
+-- Configuring incomplete, errors occurred!
+See also "D:/Study/澶т笁涓�/璁＄畻鏈�/鎿嶄綔绯荤粺/瀹為獙/浣滀笟/os_kernel_lab/cmake-build-debug/CMakeFiles/CMakeOutput.log".
+See also "D:/Study/澶т笁涓�/璁＄畻鏈�/鎿嶄綔绯荤粺/瀹為獙/浣滀笟/os_kernel_lab/cmake-build-debug/CMakeFiles/CMakeError.log".

@@ -18,7 +18,7 @@ a.out
 chytesting
 disk0
 *.orig
-lab2*.idea
+*.idea
 compile_commands.json
 *.zip
 *.asm
@@ -27,5 +27,6 @@ compile_commands.json
 *.sym
 *.out
 *.img
-cmake-*
+cmake-.*
 *.vscode
+*.idea
