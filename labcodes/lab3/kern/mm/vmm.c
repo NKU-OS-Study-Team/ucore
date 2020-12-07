@@ -396,6 +396,47 @@ do_pgfault(struct mm_struct *mm, uint32_t error_code, uintptr_t addr) {
         }
    }
 #endif
+//get_pte(pde_t *pgdir, uintptr_t la, bool create) {
+    ptep=get_pte(mm->pgdir,addr,1);
+    if(ptep == NULL){
+        cprintf("get pte failed\n");
+        goto failed;
+    }
+    if (*ptep == 0) {
+        //(2) if the phy addr isn't exist, 
+        //then alloc a page & map the phy addr with logical addr
+        // page_insert - build the map of phy addr of an Page with the linear addr la
+        // paramemters:
+        // pgdir: the kernel virtual base address of PDT
+        // page: the Page which need to map
+        // la: the linear address need to map
+        // perm: the permission of this Page which is setted in related pte
+        int *pg=pgdir_alloc_page(mm->pgdir,addr,perm);
+        if(*pg==0){
+            cprintf("alloc page failed  \n");
+            goto failed;
+        }
+    }
+    else {
+
+        // if this pte is a swap entry, then load data from disk to a page with phy addr
+           // and call page_insert to map the phy addr with logical addr
+        if(swap_init_ok) {
+            struct Page *page=NULL;
+            if ((ret = swap_in(mm, addr, &page)) != 0) {
+                cprintf("swap_in in do_pgfault failed\n");
+                goto failed;
+            }    
+            page_insert(mm->pgdir, page, addr, perm);
+            swap_map_swappable(mm, addr, page, 1);
+            page->pra_vaddr = addr;
+        }
+        else {
+            cprintf("no swap_init_ok but ptep is %x, failed\n",*ptep);
+            goto failed;
+        }
+
+    }
    ret = 0;
 failed:
     return ret;

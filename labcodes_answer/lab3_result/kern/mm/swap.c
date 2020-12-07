@@ -30,14 +30,14 @@ static void check_swap(void);
 int
 swap_init(void)
 {
-     swapfs_init();
+     swapfs_init();//swap 分区的大 小是 swapfs_init 里面根据磁盘驱动的接口计算出来的
 
      if (!(1024 <= max_swap_offset && max_swap_offset < MAX_SWAP_OFFSET_LIMIT))
      {
           panic("bad max_swap_offset %08x.\n", max_swap_offset);
      }
      
-
+     //记录页访问情况，哪些页可以换swapable，以及选择需要换出的页
      sm = &swap_manager_fifo;
      int r = sm->init();
      
